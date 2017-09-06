@@ -39,7 +39,7 @@
       rxjs: {
         defaultExtension: 'js'
       },
-      'quickstart-lib': {
+      'ngx-form-error': {
         main: 'index.js',
         defaultExtension: 'js',
         meta: {

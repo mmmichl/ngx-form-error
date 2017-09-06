@@ -1,0 +1,91 @@
+/* styles applied on :host are applied on the current component, "app" in this case */
+:host {
+  display: block;
+}
+
+header {
+  background: #0147A7;
+  color: #fff;
+  padding: 1px;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+  text-align: center;
+  font-family: sans-serif;
+}
+
+img {
+  width:50%;
+}
+
+input, button {
+  border-radius: 4px;
+  border: solid #bbb 2px;
+  font-size: 110%;
+}
+
+input:focus {
+  box-shadow: 0 0 10px #1F1F1F;
+}
+
+button {
+  margin-top: 0.5em;
+  padding: 3px 10px;
+}
+
+main {
+  padding: 1em;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+label.required::after {
+  content: "*";
+  color: #CF4647;
+  margin-left: 0.4em;
+}
+
+.ng-touched.ng-invalid {
+  border-color: darken(#CF4647, 10%);
+}
+
+.ng-touched.ng-invalid:focus {
+  box-shadow: 0 0 15px #CF4647;
+}
+
+ngx-form-error {
+  height: 0px;
+  display: block;
+  overflow: visible;
+  position: relative;
+  top: -1.7em;
+  color: #CF4647;
+  font-size: 0.8em;
+}
+
+.form-input label {
+  display: block;
+}
+
+.form-input input {
+  display: block;
+  padding: 3px;
+  margin-bottom: 1.5rem;
+}
+
+footer {
+  margin: 1rem 0;
+  text-align: center;
+  font-size: 0.7rem;
+  width: 100%;
+}
+
+footer a {
+  text-decoration: none;
+  font-family: sans-serif;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+

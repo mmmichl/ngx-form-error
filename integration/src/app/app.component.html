@@ -1,2 +1,21 @@
-<my-lib></my-lib>
-<h3>Meaning is: {{meaning}}</h3>
+<form id="reactive-form" [formGroup]="exampleForm" novalidate (ngSubmit)="formSubmit()">
+  <div class="form-input">
+    <label for="required-input" class="required">Required input</label>
+    <input formControlName="req" type="text" id="required-input">
+    <ngx-form-error [control]="exampleForm.get('req')" id="required-input-error"></ngx-form-error>
+  </div>
+
+  <button type="submit">Submit</button>
+</form>
+
+<form id="template-form" novalidate (ngSubmit)="formSubmit()">
+  <div class="form-input">
+    <label for="tpl-required-input" class="required">Required input</label>
+    <input type="text" id="tpl-required-input" name="model-required"
+           [(ngModel)]="model.reqiredField" #reqiredModel="ngModel"
+           required>
+    <ngx-form-error [control]="reqiredModel.control" id="tpl-required-input-error"></ngx-form-error>
+  </div>
+
+  <button type="submit">Submit</button>
+</form>

@@ -1,6 +1,8 @@
 import { browser, element, by } from 'protractor';
+import { AppPO } from './app.po';
 
-describe('QuickStart Lib E2E Tests', function () {
+describe('Form Error E2E Tests', function () {
+  const page = new AppPO();
 
   beforeEach(() => browser.get(''));
 
@@ -10,12 +12,36 @@ describe('QuickStart Lib E2E Tests', function () {
     });
   });
 
-  it('should display lib', () => {
-    expect(element(by.css('h2')).getText()).toEqual('Hello Angular Library');
+  it('should initially not display errors', () => {
+    expect(page.reaRequiredInputErr.getText()).toBe('', 'reqired reactive input error should not display a text');
+    expect(page.tplRequiredInputErr.getText()).toBe('', 'reqired template input error should not display a text');
   });
 
-  it('should display meaning', () => {
-    expect(element(by.css('h3')).getText()).toEqual('Meaning is: 42');
+  describe('reactive', () => {
+    it('should display errors after input interaction', () => {
+      page.reaRequiredInput.click();
+      page.container.click();
+      expect(page.reaRequiredInputErr.getText()).toBe('This field is required.');
+    });
+
+    it('should not diplay an error for valid input', () => {
+      page.reaRequiredInput.sendKeys('a');
+      page.container.click();
+      expect(page.reaRequiredInputErr.getText()).toBe('', 'reqired input error should not display a text');
+    });
   });
 
+  describe('template', () => {
+    it('should display errors after input interaction', () => {
+      page.tplRequiredInput.click();
+      page.container.click();
+      expect(page.tplRequiredInputErr.getText()).toBe('This field is required.');
+    });
+
+    it('should not diplay an error for valid input', () => {
+      page.tplRequiredInput.sendKeys('a');
+      page.container.click();
+      expect(page.tplRequiredInputErr.getText()).toBe('', 'reqired input error should not display a text');
+    });
+  });
 });

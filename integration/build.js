@@ -51,6 +51,9 @@ return Promise.resolve()
   })
   // Bundle app.
   .then(() => rollup.rollup(rollupConfig))
+  .catch(e => {
+    console.error('Rollup failed:', e);
+  })
   // Concatenate app and scripts.
   .then(bundle => {
     const appBundle = bundle.generate(rollupConfig);
@@ -67,6 +70,9 @@ return Promise.resolve()
     concatenatedScripts = concatenatedScripts.concat('\n;', appBundle.code);
 
     fs.writeFileSync(path.join(distDir, 'bundle.js'), concatenatedScripts);
+  })
+  .catch(e => {
+    console.error('Build failed:', e);
   });
 
 

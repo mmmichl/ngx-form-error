@@ -1,3 +1,2 @@
-export { LibComponent } from './src/component/lib.component';
-export { LibService } from './src/service/lib.service';
-export { LibModule } from './src/module';
+export { FormErrorComponent } from './src/form-error/form-error.component';
+export { FormErrorModule } from './src/form-error.module';
