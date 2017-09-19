@@ -1,5 +1,6 @@
+import { ErrorMessagesService } from 'ngx-form-error';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 
 @Component({
   selector: 'demo-app',
@@ -11,8 +12,9 @@ export class AppComponent implements OnInit {
   model = {
     reqiredField: '',
   };
+  customMsgCounter = 0;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private errorMessages: ErrorMessagesService) {
   }
 
   ngOnInit(): void {
@@ -25,5 +27,12 @@ export class AppComponent implements OnInit {
 
   formSubmit(): void {
     alert('Form submitted!');
+  }
+
+  toggleRequiredMsg() {
+    this.customMsgCounter += 1;
+    this.errorMessages.updateMessages({
+      required: `Custom required message (${this.customMsgCounter})`,
+    });
   }
 }

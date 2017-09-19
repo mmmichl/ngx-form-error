@@ -1,4 +1,4 @@
-import { FORM_ERROR_MESSAGES, DI_ERROR_MESSAGE_OBJ } from './form-error-messages.value';
+import { ErrorMessagesService } from './error-messages.service';
 import { FormControl } from '@angular/forms';
 import { Component, Input } from '@angular/core';
 
@@ -13,6 +13,8 @@ import { Component, Input } from '@angular/core';
 export class FormErrorComponent {
   @Input() control: FormControl;
 
+  constructor(private errorMessages: ErrorMessagesService) {}
+
   getErrors() {
     if (!this.control || !this.control.errors) {
       return [];
@@ -21,8 +23,7 @@ export class FormErrorComponent {
     return Object.keys(this.control.errors);
   }
 
-  getMessage(error: string) {
-    // TODO properly inject the error message object.
-    return DI_ERROR_MESSAGE_OBJ[error];
+  getMessage(error: string): string {
+    return this.errorMessages.getMessage(error);
   }
 }

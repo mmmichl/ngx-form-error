@@ -3,6 +3,8 @@
 </header>
 
 <main>
+  <button type="button" (click)="toggleRequiredMsg()">Set custom required message</button>
+
   <h2>In Reactive Form</h2>
   <form [formGroup]="exampleForm" novalidate (ngSubmit)="formSubmit()">
     <div class="form-input">

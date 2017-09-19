@@ -1,3 +1,4 @@
+import { ErrorMessagesService } from './error-messages.service';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
@@ -12,7 +13,8 @@ describe('FormErrorComponent', function () {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [FormErrorComponent]
+      declarations: [FormErrorComponent],
+       providers: [ErrorMessagesService],
     })
     .compileComponents();
   }));
@@ -34,7 +36,7 @@ describe('FormErrorComponent', function () {
 
     const errDiv = fixture.debugElement.query(By.css('div'));
     const errText = errDiv.nativeElement.innerText;
-    expect(errText).toEqual('This field is required.');
+    expect(errText.length).toBeGreaterThan(10, 'should have long enough error text set');
   });
 
   it('should not show an error if the control is not touched', () => {
@@ -61,8 +63,7 @@ describe('FormErrorComponent', function () {
 
   describe('getErrors', () => {
     it('should return empty array if control is null', () => {
-      expect(new FormErrorComponent().getErrors()).toEqual([]);
+      expect(new FormErrorComponent(null).getErrors()).toEqual([]);
     });
-
   });
 });

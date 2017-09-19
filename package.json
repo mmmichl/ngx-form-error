@@ -8,7 +8,7 @@
   "typings": "./ngx-form-error.d.ts",
   "author": "",
   "license": "MIT",
-  "repository": {},
+  "repository": "https://github.com/mmmichl/ngx-form-error",
   "engines": {
     "node": ">= 6.9.0",
     "npm": ">= 3.0.0"

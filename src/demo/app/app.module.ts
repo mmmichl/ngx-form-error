@@ -6,7 +6,7 @@ import { FormErrorModule } from 'ngx-form-error';
 import { AppComponent }  from './app.component';
 
 @NgModule({
-  imports:      [ BrowserModule, FormsModule, ReactiveFormsModule, FormErrorModule],
+  imports:      [ BrowserModule, FormsModule, ReactiveFormsModule, FormErrorModule.forRoot()],
   declarations: [ AppComponent ],
   bootstrap:    [ AppComponent ]
 })
