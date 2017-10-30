@@ -1,29 +1,42 @@
-import { ErrorMessagesService } from './error-messages.service';
+import { ErrorTemplateContext } from './template/error-template.context';
+import { ErrorFormConfig } from './error-form.config';
 import { FormControl } from '@angular/forms';
-import { Component, Input } from '@angular/core';
+import { Component, Input, TemplateRef } from '@angular/core';
 
 @Component({
   selector: 'ngx-form-error',
   template: `
     <div *ngIf="control?.touched && control?.invalid" class="error">
-      <div *ngFor="let error of getErrors()">{{getMessage(error)}}</div>
+      <ng-template [ngTemplateOutlet]="getTemplate() || default" [ngTemplateOutletContext]="getContext()"></ng-template>
     </div>
+
+    <ng-template #default let-errors="errors">
+      <div *ngFor="let error of errors">{{error.message}}</div>
+    </ng-template>
   `
 })
 export class FormErrorComponent {
   @Input() control: FormControl;
+  @Input() template: TemplateRef<ErrorTemplateContext>;
 
-  constructor(private errorMessages: ErrorMessagesService) {}
+  constructor(private errorFormConfig: ErrorFormConfig) {}
 
-  getErrors() {
+  getContext(): ErrorTemplateContext {
     if (!this.control || !this.control.errors) {
-      return [];
+      return {errors: []};
     }
 
-    return Object.keys(this.control.errors);
+    return {errors: Object.keys(this.control.errors).map(validation => ({
+      failedValidation: validation,
+      message: this.getMessage(validation),
+    }))};
   }
 
   getMessage(error: string): string {
-    return this.errorMessages.getMessage(error);
+    return this.errorFormConfig.getMessage(error);
+  }
+
+  getTemplate(): TemplateRef<ErrorTemplateContext> {
+    return this.template || this.errorFormConfig.getTemplate();
   }
 }

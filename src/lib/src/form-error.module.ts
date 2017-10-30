@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule, ModuleWithProviders } from '@angular/core';
 
 import { FormErrorComponent } from './form-error/form-error.component';
-import { ErrorMessagesService } from './form-error/error-messages.service';
+import { ErrorFormConfig } from './form-error/error-form.config';
 
 @NgModule({
   imports: [
@@ -20,7 +20,7 @@ export class FormErrorModule {
     return {
       ngModule: FormErrorModule,
       providers: [[
-        ErrorMessagesService
+        ErrorFormConfig
       ]]
     };
   }

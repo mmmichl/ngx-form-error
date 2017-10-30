@@ -1,4 +1,4 @@
-import { ErrorMessagesService } from './error-messages.service';
+import { ErrorFormConfig } from './error-form.config';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
@@ -14,7 +14,7 @@ describe('FormErrorComponent', function () {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [FormErrorComponent],
-       providers: [ErrorMessagesService],
+       providers: [ErrorFormConfig],
     })
     .compileComponents();
   }));
@@ -61,9 +61,9 @@ describe('FormErrorComponent', function () {
     expect(errDiv).toBeNull('should not have error div present');
   });
 
-  describe('getErrors', () => {
-    it('should return empty array if control is null', () => {
-      expect(new FormErrorComponent(null).getErrors()).toEqual([]);
+  describe('getContext', () => {
+    it('should return empty error array if control is null', () => {
+      expect(new FormErrorComponent(null).getContext()).toEqual({errors: []});
     });
   });
 });

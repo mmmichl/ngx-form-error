@@ -14,17 +14,32 @@
     </div>
 
     <div class="form-input">
-      <label for="min-len-input">Min length 2 input</label>
+      <label for="min-len-input">Min length 4 input</label>
       <input formControlName="minLen" type="text" id="min-len-input">
       <ngx-form-error [control]="exampleForm.get('minLen')"></ngx-form-error>
-      <span class="error-text">This field requires at least 2 characters.</span>
+      <!-- <span class="error-text">This field requires at least 2 characters.</span> -->
     </div>
 
     <div class="form-input">
-      <label for="min-len-num-input">Min length 2 and number input</label>
+      <label for="min-len-num-input">Min length 4 and number input</label>
       <input formControlName="minLenNum" type="text" id="min-len-num-input">
-      <span class="error-text">This field requires at least 2 characters.</span>
+      <ngx-form-error [control]="exampleForm.get('minLenNum')"></ngx-form-error>
+      <!-- <span class="error-text">This field requires at least 4 characters.</span> -->
     </div>
+
+    <div class="form-input">
+      <label for="template-input">Custom Template</label>
+      <input formControlName="template" type="text" id="template-input">
+      <ngx-form-error [control]="exampleForm.get('template')" [template]="special"></ngx-form-error>
+    </div>
+
+    <ng-template #special let-errors="errors">
+      <div *ngFor="let error of errors; let idx = index">
+        <ng-container *ngIf="idx === 0 else and">You have an error:</ng-container>
+        <ng-template #and>aaand:</ng-template>
+        {{error.message}}
+      </div>
+    </ng-template>
 
     <button type="submit">Submit</button>
   </form>
