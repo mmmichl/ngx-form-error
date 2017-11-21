@@ -28,12 +28,12 @@ export class FormErrorComponent {
 
     return {errors: Object.keys(this.control.errors).map(validation => ({
       failedValidation: validation,
-      message: this.getMessage(validation),
+      message: this.getMessage(validation, this.control.errors[validation]),
     }))};
   }
 
-  getMessage(error: string): string {
-    return this.formErrorConfig.getMessage(error);
+  getMessage(error: string, context: any): string {
+    return this.formErrorConfig.getMessage(error, context);
   }
 
   getTemplate(): TemplateRef<ErrorTemplateContext> {

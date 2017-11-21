@@ -3,32 +3,43 @@ import { Injectable, TemplateRef } from '@angular/core';
 
 export type ErrorMessage = string;
 export interface FormErrorMessages {
-  [index: string]: ErrorMessage;
+  [index: string]: ErrorMessage | ((errors: any) => ErrorMessage);
 }
 
 @Injectable()
 export class FormErrorConfig {
   private template: TemplateRef<ErrorTemplateContext>;
   private errorMessages: FormErrorMessages = {
-    min: 'This value is smaller than allowed.',
-    max: 'This value is bigger than allowed.',
+    min: (context) => {
+      return `This value must be bigger than ${context.min}.`;
+    },
+    max: (context) => {
+      return `This value must be smaller than ${context.max}.`;
+    },
     required: 'This is required.',
     requiredtrue: 'This must be true.',
     email: 'This must be a valid e-mail address.',
-    minlength: 'This text is too short.',
-    maxlength: 'This text is too long.',
+    minlength: (context) => {
+      return `This field requires at least ${context.requiredLength} characters.`;
+    },
+    maxlength: (context) => {
+      return `This field must be shorter than ${context.requiredLength} characters.`;
+    },
     pattern: 'This field contains an invalid format.',
   };
 
   constructor() { }
 
-  getMessage(validator: string): ErrorMessage {
+  getMessage(validator: string, context: any): ErrorMessage {
     const message = this.errorMessages[validator];
     if (!message) {
       console.warn('[ngx-form-error] could not find message for: ' + validator);
       return 'Error';
     }
 
+    if (message instanceof Function) {
+      return message(context);
+    }
     return message;
   }
 

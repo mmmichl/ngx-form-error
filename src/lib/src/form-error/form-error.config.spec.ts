@@ -21,6 +21,10 @@ describe('FormErrorConfig', () => {
     expect(formErrorConfig.getMessage('required', {})).toBeDefined();
   });
 
+  it('should support functions as error messages', () => {
+    expect(formErrorConfig.getMessage('minlength', {minlength: 2})).toBeDefined();
+  })
+
   describe('update messages', () => {
     it('should update mentioned messages and keep remaining messages untouched', () => {
       const origRequiredMsg = formErrorConfig.getMessage('required', {});

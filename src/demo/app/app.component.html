@@ -22,7 +22,7 @@
 
     <div class="form-input">
       <label for="min-len-num-input">Min length 4 and number input</label>
-      <input formControlName="minLenNum" type="text" id="min-len-num-input">
+      <input formControlName="minLenNum" type="number" min="4" id="min-len-num-input">
       <ngx-form-error [control]="exampleForm.get('minLenNum')"></ngx-form-error>
       <!-- <span class="error-text">This field requires at least 4 characters.</span> -->
     </div>

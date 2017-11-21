@@ -84,6 +84,9 @@ export class AppFormComponent {
   constructor(errorFormConfig: ErrorFormConfig) {
     this.errorFormConfig.updateMessages({
       required: 'Custom required message',
+      minlength: (context) => {
+        return `Custom message with context: required minimum is ${context.requiredLength} characters.`;
+      },
     });
   }
 }
