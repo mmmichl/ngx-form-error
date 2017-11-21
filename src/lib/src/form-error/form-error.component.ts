@@ -1,5 +1,5 @@
 import { ErrorTemplateContext } from './template/error-template.context';
-import { ErrorFormConfig } from './error-form.config';
+import { FormErrorConfig } from './form-error.config';
 import { FormControl } from '@angular/forms';
 import { Component, Input, TemplateRef } from '@angular/core';
 
@@ -19,7 +19,7 @@ export class FormErrorComponent {
   @Input() control: FormControl;
   @Input() template: TemplateRef<ErrorTemplateContext>;
 
-  constructor(private errorFormConfig: ErrorFormConfig) {}
+  constructor(private formErrorConfig: FormErrorConfig) {}
 
   getContext(): ErrorTemplateContext {
     if (!this.control || !this.control.errors) {
@@ -33,10 +33,10 @@ export class FormErrorComponent {
   }
 
   getMessage(error: string): string {
-    return this.errorFormConfig.getMessage(error);
+    return this.formErrorConfig.getMessage(error);
   }
 
   getTemplate(): TemplateRef<ErrorTemplateContext> {
-    return this.template || this.errorFormConfig.getTemplate();
+    return this.template || this.formErrorConfig.getTemplate();
   }
 }

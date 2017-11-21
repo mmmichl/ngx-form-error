@@ -1,4 +1,4 @@
-import { ErrorMessage } from '../error-form.config';
+import { ErrorMessage } from '../form-error.config';
 
 /**
  * Interface for the template context.

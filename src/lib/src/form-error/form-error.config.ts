@@ -2,14 +2,14 @@ import { ErrorTemplateContext } from './template/error-template.context';
 import { Injectable, TemplateRef } from '@angular/core';
 
 export type ErrorMessage = string;
-export interface FormFormConfig {
+export interface FormErrorMessages {
   [index: string]: ErrorMessage;
 }
 
 @Injectable()
-export class ErrorFormConfig {
+export class FormErrorConfig {
   private template: TemplateRef<ErrorTemplateContext>;
-  private errorMessages: FormFormConfig = {
+  private errorMessages: FormErrorMessages = {
     min: 'This value is smaller than allowed.',
     max: 'This value is bigger than allowed.',
     required: 'This is required.',
@@ -36,7 +36,7 @@ export class ErrorFormConfig {
    * Updates the error messages with the provided messages.
    * Not occuring validations will be kept untouched
    */
-  updateMessages(newValidationMessages: FormFormConfig): void {
+  updateMessages(newValidationMessages: FormErrorMessages): void {
     this.errorMessages = {
       ...this.errorMessages,
       ...newValidationMessages,

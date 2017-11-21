@@ -1,4 +1,4 @@
-import { ErrorFormConfig } from 'ngx-form-error';
+import { FormErrorConfig } from 'ngx-form-error';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { Component, OnInit, Inject } from '@angular/core';
 
@@ -14,7 +14,7 @@ export class AppComponent implements OnInit {
   };
   customMsgCounter = 0;
 
-  constructor(private fb: FormBuilder, private errorFormConfig: ErrorFormConfig) {
+  constructor(private fb: FormBuilder, private errorFormConfig: FormErrorConfig) {
   }
 
   ngOnInit(): void {
