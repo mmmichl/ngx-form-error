@@ -1,8 +1,6 @@
 # Angular Form Error
 
-[![Build Status][travis-badge]][travis-badge-url]
-[travis-badge]: https://travis-ci.org/mmmichl/ngx-form-error.svg?branch=master
-[travis-badge-url]: https://travis-ci.org/mmmichl/ngx-form-error
+[![Build Status](https://travis-ci.org/mmmichl/ngx-form-error.svg?branch=master)](https://travis-ci.org/mmmichl/ngx-form-error)
 
 An Angular library to display form error messages effortless and consistently.
 
@@ -35,7 +33,7 @@ import { AppComponent }  from './app.component';
   imports:      [
     BrowserModule,
     ReactiveFormsModule,
-    FormErrorModule.forRoot() // import FormErrorModule
+    FormErrorModule   // import FormErrorModule
   ],
   declarations: [ AppComponent ],
   bootstrap:    [ AppComponent ],
