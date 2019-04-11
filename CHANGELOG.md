@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [1.0.0](https://github.com/mmmichl/ngx-form-error/compare/v1.0.0-0...v1.0.0) (2019-04-11)
+
+
+
 # [1.0.0-0](https://github.com/mmmichl/ngx-form-error/compare/v0.3.0...v1.0.0-0) (2019-04-11)
 
 
