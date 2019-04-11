@@ -5,3 +5,4 @@
 export * from './lib/ngx-form-error.component';
 export * from './lib/ngx-form-error.config';
 export * from './lib/ngx-form-error.module';
+export * from './lib/template/error-template.context';

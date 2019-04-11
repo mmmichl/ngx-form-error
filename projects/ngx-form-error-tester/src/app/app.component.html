@@ -58,6 +58,12 @@
   </form>
 </main>
 
+<ng-template #defFrmErrorTpl let-errors="errors">
+  <div *ngFor="let error of errors" class="error-message">
+    awww: {{error.message}}
+  </div>
+</ng-template>
+
 <footer>
   <a href="https://github.com/mmmichl/ngx-form-error" target="_BLANK">
     Github

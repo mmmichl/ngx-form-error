@@ -21,7 +21,7 @@ describe('Form Error E2E Tests', () => {
     it('should display errors after input interaction', () => {
       page.reaRequiredInput.click();
       page.container.click();
-      expect(page.reaRequiredInputErr.getText()).toBe('This is required.');
+      expect(page.reaRequiredInputErr.getText()).toBe('awww: This is required.');
     });
 
     it('should not diplay an error for valid input', () => {
@@ -35,7 +35,7 @@ describe('Form Error E2E Tests', () => {
     it('should display errors after input interaction', () => {
       page.tplRequiredInput.click();
       page.container.click();
-      expect(page.tplRequiredInputErr.getText()).toBe('This is required.');
+      expect(page.tplRequiredInputErr.getText()).toBe('awww: This is required.');
     });
 
     it('should not diplay an error for valid input', () => {
