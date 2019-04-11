@@ -11,6 +11,7 @@ Features:
 - consistent error messages
 - small markup
 - change messages to your liking
+- variable messages: include specifics from validator (e.g. min lenght)
 
 ## Install
 
@@ -125,10 +126,5 @@ Common tasks are present as npm scripts:
 - `npm run test` to test in watch mode, or `npm run test:once` to only run once
 - `npm run build` to build the library
 - `npm run lint` to lint
-- `npm run clean` to clean
-- `npm run integration` to run the integration e2e tests
+- `npm run e2e` to run the integration e2e tests
 - `npm install ./relative/path/to/lib` after `npm run build` to test locally in another app
-
-If you need to debug the integration app, please check `./integration/README.md`.
-
-based on [Angular QuickStart Lib](https://github.com/filipesilva/angular-quickstart-lib)
