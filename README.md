@@ -125,28 +125,12 @@ import { ErrorTemplateContext } from 'ngx-form-error/lib/template/error-template
   `
 })
 export class AppComponent implements OnInit{
-  @ViewChild('defFrmErrorTpl') frmErrorTpl: TemplateRef<ErrorTemplateContext>;
+  @ViewChild('defFrmErrorTpl', {static: false}) frmErrorTpl: TemplateRef<ErrorTemplateContext>;
 
   constructor(private errorFormConfig: NgxFormErrorConfig) {
   }
 
-  ngOnInit() {
+  ngAfterViewInit(): void {
     this.errorFormConfig.setTemplate(this.frmErrorTpl);
   }
 }```
-
-
-## Contribution
-
-*Before committing*, ensure following command passes:
-
-- `npm run commit-check`
-
-Common tasks are present as npm scripts:
-
-- `npm start` to run a live-reload server with the demo app
-- `npm run test` to test in watch mode, or `npm run test:once` to only run once
-- `npm run build` to build the library
-- `npm run lint` to lint
-- `npm run e2e` to run the integration e2e tests
-- `npm install ./relative/path/to/lib` after `npm run build` to test locally in another app

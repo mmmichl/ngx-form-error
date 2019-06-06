@@ -7,8 +7,8 @@ import { Component, OnInit, Inject, ViewChild, TemplateRef, ViewContainerRef, Af
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
-  @ViewChild('defFrmErrorTpl')
+export class AppComponent implements OnInit, AfterViewInit {
+  @ViewChild('defFrmErrorTpl', {static: false})
   private defFrmErrorTpl: TemplateRef<ErrorTemplateContext>;
 
   exampleForm: FormGroup;
@@ -21,7 +21,6 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.errorFormConfig.setTemplate(this.defFrmErrorTpl);
 
     this.exampleForm = this.fb.group({
       req: ['', Validators.required],
@@ -29,6 +28,10 @@ export class AppComponent implements OnInit {
       minLenNum: ['', [Validators.minLength(4), Validators.pattern(/^\d*$/)]],
       template: ['', [Validators.minLength(4), Validators.pattern(/^\d*$/)]],
     });
+  }
+
+  ngAfterViewInit(): void {
+    this.errorFormConfig.setTemplate(this.defFrmErrorTpl);
   }
 
   formSubmit(): void {
