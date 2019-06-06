@@ -1,6 +1,6 @@
 {
   "name": "ngx-form-error",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Display error messages for angular forms",
   "author": "Michael Ressmann",
   "license": "MIT",
