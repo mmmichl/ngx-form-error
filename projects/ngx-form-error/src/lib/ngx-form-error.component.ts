@@ -17,7 +17,7 @@ import { Component, Input, TemplateRef } from '@angular/core';
   `
 })
 export class NgxFormErrorComponent {
-  @Input() control?: FormControl;
+  @Input() control?: FormControl | null;
   @Input() template?: TemplateRef<ErrorTemplateContext>;
 
   constructor(private formErrorConfig: NgxFormErrorConfig) {}
