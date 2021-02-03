@@ -12,7 +12,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build ngx-form-error",
+    "build": "ng build ngx-form-error --prod",
     "postbuild": "cp README.md dist/ngx-form-error",
     "test": "ng test ngx-form-error",
     "test:once": "ng test --watch=false ngx-form-error",

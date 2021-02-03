@@ -21,5 +21,6 @@ Checklist for a release
 - `npm run release`
 - `git push --follow-tags origin master`
 - `npm run build`
-- `cd dist\ngx-form-error`
+- `cd dist/ngx-form-error`
+- _optional:_ `npm login`
 - `npm publish`
