@@ -7,7 +7,8 @@ import { Component, Input, TemplateRef } from '@angular/core';
   selector: 'ngx-form-error',
   template: `
     <div *ngIf="control?.touched && control?.invalid" class="error">
-      <ng-template [ngTemplateOutlet]="getTemplate() || default" [ngTemplateOutletContext]="getContext()"></ng-template>
+      <ng-template [ngTemplateOutlet]="getTemplate() || default"
+                   [ngTemplateOutletContext]="getContext()"></ng-template>
     </div>
 
     <ng-template #default let-errors="errors">
@@ -16,8 +17,8 @@ import { Component, Input, TemplateRef } from '@angular/core';
   `
 })
 export class NgxFormErrorComponent {
-  @Input() control: FormControl;
-  @Input() template: TemplateRef<ErrorTemplateContext>;
+  @Input() control?: FormControl;
+  @Input() template?: TemplateRef<ErrorTemplateContext>;
 
   constructor(private formErrorConfig: NgxFormErrorConfig) {}
 
@@ -26,17 +27,19 @@ export class NgxFormErrorComponent {
       return {errors: []};
     }
 
-    return {errors: Object.keys(this.control.errors).map(validation => ({
-      failedValidation: validation,
-      message: this.getMessage(validation, this.control.errors[validation]),
-    }))};
+    return {
+      errors: Object.keys(this.control.errors).map(validation => ({
+        failedValidation: validation,
+        message: this.getMessage(validation, this.control?.errors?.[validation]),
+      }))
+    };
   }
 
   getMessage(error: string, context: any): string {
     return this.formErrorConfig.getMessage(error, context);
   }
 
-  getTemplate(): TemplateRef<ErrorTemplateContext> {
+  getTemplate(): TemplateRef<ErrorTemplateContext> | undefined {
     return this.template || this.formErrorConfig.getTemplate();
   }
 }

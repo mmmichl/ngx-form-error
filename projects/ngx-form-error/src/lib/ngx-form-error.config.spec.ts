@@ -10,7 +10,7 @@ describe('NgxFormErrorConfig', () => {
       providers: [NgxFormErrorConfig]
     });
 
-    formErrorConfig = TestBed.get(NgxFormErrorConfig);
+    formErrorConfig = TestBed.inject(NgxFormErrorConfig);
   });
 
   it('should be created', inject([NgxFormErrorConfig], (service: NgxFormErrorConfig) => {

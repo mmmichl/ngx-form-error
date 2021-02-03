@@ -9,9 +9,14 @@ import { Component, OnInit, Inject, ViewChild, TemplateRef, ViewContainerRef, Af
 })
 export class AppComponent implements OnInit, AfterViewInit {
   @ViewChild('defFrmErrorTpl', {static: false})
-  private defFrmErrorTpl: TemplateRef<ErrorTemplateContext>;
+  private defFrmErrorTpl!: TemplateRef<ErrorTemplateContext>;
 
-  exampleForm: FormGroup;
+  exampleForm = this.fb.group({
+    req: ['', Validators.required],
+    minLen: ['', Validators.minLength(4)],
+    minLenNum: ['', [Validators.minLength(4), Validators.pattern(/^\d*$/)]],
+    template: ['', [Validators.minLength(4), Validators.pattern(/^\d*$/)]],
+  });
   model = {
     reqiredField: '',
   };
@@ -21,13 +26,6 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-
-    this.exampleForm = this.fb.group({
-      req: ['', Validators.required],
-      minLen: ['', Validators.minLength(4)],
-      minLenNum: ['', [Validators.minLength(4), Validators.pattern(/^\d*$/)]],
-      template: ['', [Validators.minLength(4), Validators.pattern(/^\d*$/)]],
-    });
   }
 
   ngAfterViewInit(): void {

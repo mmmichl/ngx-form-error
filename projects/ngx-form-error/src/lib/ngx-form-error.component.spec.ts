@@ -1,17 +1,16 @@
-import { NgxFormErrorConfig } from './ngx-form-error.config';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { FormControl, ValidationErrors } from '@angular/forms';
-
+import { By } from '@angular/platform-browser';
 import { NgxFormErrorComponent } from './ngx-form-error.component';
+import { NgxFormErrorConfig } from './ngx-form-error.config';
+
 
 
 describe('NgxFormErrorComponent', () => {
   let comp: NgxFormErrorComponent;
   let fixture: ComponentFixture<NgxFormErrorComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [NgxFormErrorComponent],
        providers: [NgxFormErrorConfig],
@@ -63,7 +62,7 @@ describe('NgxFormErrorComponent', () => {
 
   describe('getContext', () => {
     it('should return empty error array if control is null', () => {
-      expect(new NgxFormErrorComponent(null).getContext()).toEqual({errors: []});
+      expect(new NgxFormErrorComponent(null as any).getContext()).toEqual({errors: []});
     });
   });
 });

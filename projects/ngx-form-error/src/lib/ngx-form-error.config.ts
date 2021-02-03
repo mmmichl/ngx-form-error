@@ -10,7 +10,7 @@ export interface FormErrorMessages {
   providedIn: 'root'
 })
 export class NgxFormErrorConfig {
-  private template: TemplateRef<ErrorTemplateContext>;
+  private template?: TemplateRef<ErrorTemplateContext>;
   private errorMessages: FormErrorMessages = {
     min: (context) => {
       return `This value must be bigger than ${context.min}.`;
@@ -60,7 +60,7 @@ export class NgxFormErrorConfig {
     this.template = template;
   }
 
-  getTemplate(): TemplateRef<ErrorTemplateContext> {
+  getTemplate(): TemplateRef<ErrorTemplateContext> | undefined {
     return this.template;
   }
 }
