@@ -20,5 +20,6 @@ Checklist for a release
 - `npm run commit-check`
 - `npm run release`
 - `git push --follow-tags origin master`
+- `npm run build`
 - `cd dist\ngx-form-error`
 - `npm publish`

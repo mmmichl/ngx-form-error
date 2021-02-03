@@ -10,10 +10,15 @@
       "prefix": "ngx",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "tsConfig": "projects/ngx-form-error/tsconfig.lib.json",
             "project": "projects/ngx-form-error/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngx-form-error/tsconfig.lib.prod.json"
+            }
           }
         },
         "test": {
@@ -61,7 +66,7 @@
               "projects/ngx-form-error-tester/src/styles.css"
             ],
             "scripts": [],
-            "es5BrowserSupport": true
+            "aot": true
           },
           "configurations": {
             "production": {
@@ -76,7 +81,6 @@
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
-              "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
@@ -85,6 +89,10 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ]
             }
