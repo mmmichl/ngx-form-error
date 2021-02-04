@@ -19,7 +19,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "release": "cd projects/ngx-form-error; standard-version --infile ../../CHANGELOG.md",
-    "commit-check": "npm run lint && npm run test:once && npm run build && npm run e2e"
+    "commit-check": "npm run lint && npm run test:once && npm run build && ng build ngx-form-error-tester && npm run e2e"
   },
   "dependencies": {
     "@angular/animations": "~11.1.1",

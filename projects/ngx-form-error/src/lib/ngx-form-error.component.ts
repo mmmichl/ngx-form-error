@@ -1,6 +1,6 @@
 import { ErrorTemplateContext } from './template/error-template.context';
 import { NgxFormErrorConfig } from './ngx-form-error.config';
-import { FormControl } from '@angular/forms';
+import { AbstractControl, FormControl } from '@angular/forms';
 import { Component, Input, TemplateRef } from '@angular/core';
 
 @Component({
@@ -17,7 +17,7 @@ import { Component, Input, TemplateRef } from '@angular/core';
   `
 })
 export class NgxFormErrorComponent {
-  @Input() control?: FormControl | null;
+  @Input() control: AbstractControl | null = null;
   @Input() template?: TemplateRef<ErrorTemplateContext>;
 
   constructor(private formErrorConfig: NgxFormErrorConfig) {}
